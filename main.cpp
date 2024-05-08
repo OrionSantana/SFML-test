@@ -1,11 +1,15 @@
 #include <SFML/Graphics.hpp>
+#include "Grid.hpp"
 using namespace sf;
+
+int numCells = 50;
+int width = 400;
+int height = 400;
 int main()
 {
-    RenderWindow window(VideoMode(200, 200), "SFML works!");
-    CircleShape shape(100.f);
-    shape.setFillColor(Color::Green);
-
+    RenderWindow window(VideoMode(width, height), "SFML works!");
+    Grid grid(numCells, width, height);
+    window.setFramerateLimit(20);
     while (window.isOpen())
     {
         Event event;
@@ -13,10 +17,20 @@ int main()
         {
             if (event.type == Event::Closed)
                 window.close();
-        }
 
+            if (event.type == Event::MouseButtonPressed)
+            {
+                if (event.mouseButton.button == Mouse::Left)
+                {
+                    int x = event.mouseButton.x;
+                    int y = event.mouseButton.y;
+                    grid.toggle(x, y);
+                }
+            }
+        }
         window.clear();
-        window.draw(shape);
+        grid.update();
+        grid.drawTo(window);
         window.display();
     }
 
