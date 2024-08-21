@@ -15,7 +15,7 @@ int cols;
 int w;
 int h;
     public:
-Grid(int n,int w, int h);
+Grid(int n,int w, int h);//WASA
 Grid(int cols, int rows);
 void update();
 void create(int x,int y);
