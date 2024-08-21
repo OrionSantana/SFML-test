@@ -50,7 +50,7 @@ void Grid::drawTo(RenderWindow &window){
             rect.setOutlineColor(Color::Black);
             if (mapa[j][i]==1){
             rect.setFillColor(Color::Magenta);
-            /*    int n=(rand()%5);
+                int n=(rand()%5);
                 switch(n){
                     case 0:
             rect.setFillColor(Color::Magenta);
@@ -67,7 +67,7 @@ void Grid::drawTo(RenderWindow &window){
                     case 4:
             rect.setFillColor(Color::White);
                     break;
-                }*/
+                }
             
             }
             window.draw(rect);
@@ -121,7 +121,7 @@ for (int i=0;i<this->rows;i++){
                 this->next[i][j+1]=1;
                 this->next[i][j]=0;
             }else{
-                if (mapa[i-1][j+2]==0 && j<cols-2 && i!=1){
+                if (mapa[i-1][j+2]==0 && j<cols-2 && i-1>1){
                     this->next[i-1][j+2]=1;
                     this->next[i][j]=0;
                 }else {
@@ -139,7 +139,6 @@ for (int i=0;i<this->rows;i++){
             if (mapa[i][j]==1){
             this->next[i][j]=1;
             }else {
-                this->next[i][j]==0;
             }
         }
         }
